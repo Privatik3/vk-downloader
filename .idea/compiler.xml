@@ -25,6 +25,9 @@
         <module name="vk-downloader" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="vk-downloader" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

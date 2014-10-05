@@ -1,7 +1,5 @@
 package gui;
 
-import javafx.beans.binding.StringBinding;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +11,7 @@ public class MainFrame extends JFrame {
     private JButton searchButton;
     private JLabel labelSearchHelper;
     private JPanel rootPanel;
-    private JTextArea textAreaAnimeList;
+    private JTextArea textAreaLog;
 
     LogicProgram logic;
 
@@ -21,10 +19,33 @@ public class MainFrame extends JFrame {
         super("Anime dowloader");
         this.logic = logic;
 
+        installComponent();
         createAndShowGUI();
     }
 
-    private void createAndShowGUI() {
+    private void installComponent() {
+        rootPanel = new JPanel();
+        rootPanel.setLayout(new BoxLayout(rootPanel, BoxLayout.Y_AXIS));
+        rootPanel.setPreferredSize(new Dimension(300, 200));
+
+        labelSearchHelper = new JLabel("Enter here your search request:");
+        labelSearchHelper.setMaximumSize(new Dimension(500, 200));
+        rootPanel.add(labelSearchHelper);
+
+        searchTextFild = new JTextField();
+        searchTextFild.setMaximumSize(new Dimension(500, 20));
+        rootPanel.add(searchTextFild);
+
+        searchButton = new JButton("Search");
+        searchButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        rootPanel.add(searchButton);
+
+        textAreaLog = new JTextArea();
+        textAreaLog.setEditable(false);
+        rootPanel.add(textAreaLog);
+    }
+
+    public void createAndShowGUI() {
 
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,18 +70,14 @@ public class MainFrame extends JFrame {
 
     public void printAnimeList(List<String[]> animeList) {
 
-        textAreaAnimeList.setText("");
+        textAreaLog.setText("");
 
         if (animeList.size() == 0) {
-            textAreaAnimeList.append("Извините по вашему запросу нечего не найдено");
+            textAreaLog.append("Извините по вашему запросу нечего не найдено");
+        }
+        else {
+            textAreaLog.append("По вашему запросу найдено " + animeList.size() + " видео");
         }
 
-        int index = 1;
-        for (String[] anime : animeList) {
-            String newline = " " + index + ". " + anime[0] + "\n";
-            textAreaAnimeList.append(newline);
-
-            index++;
-        }
     }
 }

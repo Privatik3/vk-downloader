@@ -47,7 +47,9 @@ public class PropertiesFile {
 
     public PropertiesFile() {
 
-        String path = System.getProperty("user.dir")+"\\src\\main\\java\\configuration\\config.properties";
+
+        String filePath = new File("").getAbsolutePath();
+        String path = filePath + "config.properties";
 
         if ((new File(path).exists())) {
             readProperties(path);

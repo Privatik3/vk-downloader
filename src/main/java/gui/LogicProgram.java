@@ -22,7 +22,8 @@ public class LogicProgram {
 
     private void startLogic() {
 
-        String accessToken = configure.getAccessToken();
+        //String accessToken = configure.getAccessToken();
+        String accessToken = "7268b42c52683105eda2d7e08197f522dc971bfa9dad642b967c0fc4eff89d722a633fbc20f95b0244d3d";
         if (accessToken == "") {
 
         }
@@ -41,7 +42,8 @@ public class LogicProgram {
 
             if (animeList.size() != 0) {
                 saveXML = new SaveXML(animeList);
-                saveXML.createFileXML(configure.getPatchToXML());
+                //saveXML.createFileXML(configure.getPatchToXML());
+                saveXML.createFileXML("D:\\\\default.xml");
             }
         }
     }

@@ -99,14 +99,15 @@ public class SearchVideo {
         StringBuilder urlBuilder = new StringBuilder();
 
         urlBuilder.append("https://api.vk.com/method/video.search?");
-        urlBuilder.append("q").append(request).append("&");
-        urlBuilder.append("sort").append("2").append("&");
-        urlBuilder.append("hd").append("5").append("&");
-        urlBuilder.append("adult").append("0").append("&");
-        urlBuilder.append("filters").append("long").append("&");
-        urlBuilder.append("count").append("5").append("&");
-        urlBuilder.append("v").append("5.24").append("&");
-        urlBuilder.append("access_token").append(accessTocen);
+        urlBuilder.append("q=").append(URLEncoder.encode(request)).append("&");
+        urlBuilder.append("sort=").append("2").append("&");
+        urlBuilder.append("hd=").append("5").append("&");
+        urlBuilder.append("adult=").append("0").append("&");
+        urlBuilder.append("filters=").append("long").append("&");
+        urlBuilder.append("count=").append("5").append("&");
+        urlBuilder.append("v=").append("5.24").append("&");
+        urlBuilder.append("access_token=").append(accessTocen);
+
 
         URL url2 = new URL(urlBuilder.toString());
 
